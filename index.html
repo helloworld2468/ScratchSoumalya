@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<!-- saved from url=(0024)https://scratch.mit.edu/ -->
+<html coupert-item="9AF8D9A4E502F3784AD24272D81F0381" style="--scratchr2-activeColor:#4280d7; --scratchr2-linkColor:#4d97ff; --scratchr2-primaryColor:#4d97ff; --scratchr2-primaryColor-text:#ffffff; --scratchr2-primaryColor-transparentText:#ffffffb0; --scratchr2-primaryColor-filter:none; --scratchr2-primaryColor-reverseFilter:brightness(0) invert(1); --scratchr2-activeColor-text:#ffffff; --scratchr2-activeColor-filter:none;" lang="en"><div id="scratchaddons-iframes"><iframe id="scratchaddons-iframe-1" style="display: none;" src="./Scratch - Imagine, Program, Share_files/saved_resource.html"></iframe><iframe id="scratchaddons-iframe-2" style="display: none;" src="./Scratch - Imagine, Program, Share_files/saved_resource(1).html"></iframe><iframe id="scratchaddons-iframe-3" style="display: none;" src="./Scratch - Imagine, Program, Share_files/saved_resource(2).html"></iframe><iframe id="scratchaddons-iframe-4" style="display: none;" src="./Scratch - Imagine, Program, Share_files/saved_resource(3).html"></iframe></div><script async="" src="./Scratch - Imagine, Program, Share_files/analytics.js.download"></script><script src="chrome-extension://fbeffbjdlemaoicjdapfpikkikjoneco/libraries/thirdparty/cs/comlink.js"></script><script type="module" src="chrome-extension://fbeffbjdlemaoicjdapfpikkikjoneco/content-scripts/inject/module.js"></script><script>(function injectRedux() {
+  window.__scratchAddonsRedux = {};
+  if (typeof window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ !== "undefined") {
+    return console.warn(
+      "Redux feature is disabled due to conflict. \
+Some addons will not work. Uninstall other browser extensions to \
+fix this warning."
+    );
+  }
+
+  // ReDucks: Redux ducktyped
+  // Not actual Redux, but should be compatible
+  class ReDucks {
+    static compose(...composeArgs) {
+      if (composeArgs.length === 0) return (...args) => args;
+      return (...args) => {
+        const composeArgsReverse = composeArgs.slice(0).reverse();
+        let result = composeArgsReverse.shift()(...args);
+        for (const fn of composeArgsReverse) {
+          result = fn(result);
+        }
+        return result;
+      };
+    }
+
+    static applyMiddleware(...middlewares) {
+      return (createStore) =>
+        (...createStoreArgs) => {
+          const store = createStore(...createStoreArgs);
+          let { dispatch } = store;
+          const api = {
+            getState: store.getState,
+            dispatch: (action) => dispatch(action),
+          };
+          const initialized = middlewares.map((middleware) => middleware(api));
+          dispatch = ReDucks.compose(...initialized)(store.dispatch);
+          return Object.assign({}, store, { dispatch });
+        };
+    }
+  }
+
+  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ = function (...args) {
+    const scratchAddonsRedux = window.__scratchAddonsRedux;
+    const reduxTarget = (scratchAddonsRedux.target = new EventTarget());
+    scratchAddonsRedux.state = {};
+    scratchAddonsRedux.dispatch = () => {};
+
+    function middleware({ getState, dispatch }) {
+      scratchAddonsRedux.dispatch = dispatch;
+      scratchAddonsRedux.state = getState();
+      return (next) => (action) => {
+        const nextReturn = next(action);
+        const ev = new CustomEvent("statechanged", {
+          detail: {
+            prev: scratchAddonsRedux.state,
+            next: (scratchAddonsRedux.state = getState()),
+            action,
+          },
+        });
+        reduxTarget.dispatchEvent(ev);
+        return nextReturn;
+      };
+    }
+    args.splice(1, 0, ReDucks.applyMiddleware(middleware));
+    return ReDucks.compose.apply(this, args);
+  };
+})()</script><script>(function fixConsole() {
+  window._realConsole = {
+    ...console,
+  };
+})()</script><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Prevent mobile Safari from making phone numbers -->
+        <meta name="format-detection" content="telephone=no">
+
+        
+            <title>Scratch - Imagine, Program, Share</title>
+
+            <!-- Search & Open Graph-->
+            <meta name="description" content="Scratch is a free programming language and online community where you can create your own interactive stories, games, and animations.">
+            <meta name="google-site-verification" content="m_3TAXDreGTFyoYnEmU9mcKB4Xtw5mw6yRkuJtXRKxM">
+
+            <meta property="og:url" content="https://scratch.mit.edu/">
+            <meta property="og:type" content="website">
+            <meta property="og:title" content="Scratch - Imagine, Program, Share">
+            <meta property="og:description" content="Scratch is a free programming language and online community where you can create your own interactive stories, games, and animations.">
+            <meta property="og:image" content="https://scratch.mit.edu/images/scratch-og.png">
+            <meta property="og:image:type" content="image/png">
+            <meta property="og:image:width" content="986">
+            <meta property="og:image:height" content="860">
+        
+
+        <!-- Favicon & CSS normalize -->
+        <link rel="shortcut icon" href="https://scratch.mit.edu/favicon.ico">
+        <link rel="stylesheet" href="./Scratch - Imagine, Program, Share_files/normalize.min.css">
+        <link rel="stylesheet" href="./Scratch - Imagine, Program, Share_files/common.css">
+        <link rel="stylesheet" href="./Scratch - Imagine, Program, Share_files/splash.css">
+
+        <!-- Polyfills -->
+        <script src="./Scratch - Imagine, Program, Share_files/polyfill.min.js.download"></script>
+
+        <!-- Analytics (GA) -->
+        <script>
+            /* eslint-disable */
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-30688952-1', {
+                'sampleRate': 10
+            });
+            ga('send', 'pageview');
+            window.GA_ID = 'UA-30688952-1';
+            /* eslint-enable */
+        </script>
+    <style>
+        @font-face{
+            font-family: 'Circular'; 
+            font-weight: 400;
+            src: url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.eot);
+            src: url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.eot?#iefix) format('embedded-opentype'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.woff2) format('woff2'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.woff) format('woff'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.ttf) format('truetype'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.svg) format('svg');
+        }
+        @font-face{
+            font-family: 'Circular'; 
+            font-weight: 700;
+            src: url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.eot);
+            src: url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.eot?#iefix) format('embedded-opentype'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.woff2) format('woff2'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.woff) format('woff'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.ttf) format('truetype'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.svg) format('svg');
+        }
+    </style><style>
+        @font-face{
+            font-family: 'Circular'; 
+            font-weight: 400;
+            src: url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.eot);
+            src: url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.eot?#iefix) format('embedded-opentype'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.woff2) format('woff2'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.woff) format('woff'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.ttf) format('truetype'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.svg) format('svg');
+        }
+        @font-face{
+            font-family: 'Circular'; 
+            font-weight: 700;
+            src: url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.eot);
+            src: url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.eot?#iefix) format('embedded-opentype'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.woff2) format('woff2'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.woff) format('woff'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.ttf) format('truetype'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.svg) format('svg');
+        }
+    </style><style>
+        @font-face{
+            font-family: 'Circular'; 
+            font-weight: 400;
+            src: url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.eot);
+            src: url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.eot?#iefix) format('embedded-opentype'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.woff2) format('woff2'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.woff) format('woff'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.ttf) format('truetype'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.svg) format('svg');
+        }
+        @font-face{
+            font-family: 'Circular'; 
+            font-weight: 700;
+            src: url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.eot);
+            src: url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.eot?#iefix) format('embedded-opentype'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.woff2) format('woff2'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.woff) format('woff'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.ttf) format('truetype'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.svg) format('svg');
+        }
+    </style><style>
+        @font-face{
+            font-family: 'Circular'; 
+            font-weight: 400;
+            src: url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.eot);
+            src: url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.eot?#iefix) format('embedded-opentype'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.woff2) format('woff2'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.woff) format('woff'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.ttf) format('truetype'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.svg) format('svg');
+        }
+        @font-face{
+            font-family: 'Circular'; 
+            font-weight: 700;
+            src: url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.eot);
+            src: url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.eot?#iefix) format('embedded-opentype'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.woff2) format('woff2'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.woff) format('woff'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.ttf) format('truetype'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.svg) format('svg');
+        }
+    </style><style>
+        @font-face{
+            font-family: 'Circular'; 
+            font-weight: 400;
+            src: url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.eot);
+            src: url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.eot?#iefix) format('embedded-opentype'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.woff2) format('woff2'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.woff) format('woff'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.ttf) format('truetype'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.svg) format('svg');
+        }
+        @font-face{
+            font-family: 'Circular'; 
+            font-weight: 700;
+            src: url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.eot);
+            src: url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.eot?#iefix) format('embedded-opentype'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.woff2) format('woff2'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.woff) format('woff'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.ttf) format('truetype'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.svg) format('svg');
+        }
+    </style><style>
+        @font-face{
+            font-family: 'Circular'; 
+            font-weight: 400;
+            src: url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.eot);
+            src: url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.eot?#iefix) format('embedded-opentype'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.woff2) format('woff2'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.woff) format('woff'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.ttf) format('truetype'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.svg) format('svg');
+        }
+        @font-face{
+            font-family: 'Circular'; 
+            font-weight: 700;
+            src: url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.eot);
+            src: url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.eot?#iefix) format('embedded-opentype'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.woff2) format('woff2'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.woff) format('woff'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.ttf) format('truetype'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.svg) format('svg');
+        }
+    </style><style>
+        @font-face{
+            font-family: 'Circular'; 
+            font-weight: 400;
+            src: url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.eot);
+            src: url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.eot?#iefix) format('embedded-opentype'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.woff2) format('woff2'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.woff) format('woff'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.ttf) format('truetype'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.svg) format('svg');
+        }
+        @font-face{
+            font-family: 'Circular'; 
+            font-weight: 700;
+            src: url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.eot);
+            src: url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.eot?#iefix) format('embedded-opentype'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.woff2) format('woff2'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.woff) format('woff'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.ttf) format('truetype'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.svg) format('svg');
+        }
+    </style><style>
+        @font-face{
+            font-family: 'Circular'; 
+            font-weight: 400;
+            src: url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.eot);
+            src: url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.eot?#iefix) format('embedded-opentype'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.woff2) format('woff2'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.woff) format('woff'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.ttf) format('truetype'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.svg) format('svg');
+        }
+        @font-face{
+            font-family: 'Circular'; 
+            font-weight: 700;
+            src: url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.eot);
+            src: url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.eot?#iefix) format('embedded-opentype'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.woff2) format('woff2'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.woff) format('woff'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.ttf) format('truetype'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.svg) format('svg');
+        }
+    </style><style>
+        @font-face{
+            font-family: 'Circular'; 
+            font-weight: 400;
+            src: url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.eot);
+            src: url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.eot?#iefix) format('embedded-opentype'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.woff2) format('woff2'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.woff) format('woff'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.ttf) format('truetype'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.svg) format('svg');
+        }
+        @font-face{
+            font-family: 'Circular'; 
+            font-weight: 700;
+            src: url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.eot);
+            src: url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.eot?#iefix) format('embedded-opentype'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.woff2) format('woff2'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.woff) format('woff'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.ttf) format('truetype'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.svg) format('svg');
+        }
+    </style><style>
+        @font-face{
+            font-family: 'Circular'; 
+            font-weight: 400;
+            src: url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.eot);
+            src: url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.eot?#iefix) format('embedded-opentype'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.woff2) format('woff2'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.woff) format('woff'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.ttf) format('truetype'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.svg) format('svg');
+        }
+        @font-face{
+            font-family: 'Circular'; 
+            font-weight: 700;
+            src: url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.eot);
+            src: url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.eot?#iefix) format('embedded-opentype'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.woff2) format('woff2'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.woff) format('woff'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.ttf) format('truetype'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.svg) format('svg');
+        }
+    </style><style>
+        @font-face{
+            font-family: 'Circular'; 
+            font-weight: 400;
+            src: url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.eot);
+            src: url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.eot?#iefix) format('embedded-opentype'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.woff2) format('woff2'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.woff) format('woff'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.ttf) format('truetype'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.svg) format('svg');
+        }
+        @font-face{
+            font-family: 'Circular'; 
+            font-weight: 700;
+            src: url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.eot);
+            src: url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.eot?#iefix) format('embedded-opentype'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.woff2) format('woff2'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.woff) format('woff'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.ttf) format('truetype'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.svg) format('svg');
+        }
+    </style><style>
+        @font-face{
+            font-family: 'Circular'; 
+            font-weight: 400;
+            src: url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.eot);
+            src: url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.eot?#iefix) format('embedded-opentype'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.woff2) format('woff2'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.woff) format('woff'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.ttf) format('truetype'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.svg) format('svg');
+        }
+        @font-face{
+            font-family: 'Circular'; 
+            font-weight: 700;
+            src: url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.eot);
+            src: url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.eot?#iefix) format('embedded-opentype'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.woff2) format('woff2'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.woff) format('woff'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.ttf) format('truetype'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.svg) format('svg');
+        }
+    </style><style>
+        @font-face{
+            font-family: 'Circular'; 
+            font-weight: 400;
+            src: url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.eot);
+            src: url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.eot?#iefix) format('embedded-opentype'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.woff2) format('woff2'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.woff) format('woff'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.ttf) format('truetype'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.svg) format('svg');
+        }
+        @font-face{
+            font-family: 'Circular'; 
+            font-weight: 700;
+            src: url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.eot);
+            src: url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.eot?#iefix) format('embedded-opentype'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.woff2) format('woff2'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.woff) format('woff'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.ttf) format('truetype'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.svg) format('svg');
+        }
+    </style><style>
+        @font-face{
+            font-family: 'Circular'; 
+            font-weight: 400;
+            src: url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.eot);
+            src: url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.eot?#iefix) format('embedded-opentype'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.woff2) format('woff2'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.woff) format('woff'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.ttf) format('truetype'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Regular.svg) format('svg');
+        }
+        @font-face{
+            font-family: 'Circular'; 
+            font-weight: 700;
+            src: url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.eot);
+            src: url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.eot?#iefix) format('embedded-opentype'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.woff2) format('woff2'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.woff) format('woff'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.ttf) format('truetype'),
+                url(chrome-extension://pefhciejnkgdgoahgfeklebcbpmhnhhd/font/Circular-Pro-Black-Bold.svg) format('svg');
+        }
+    </style></head><link rel="stylesheet" data-addon-id="full-signature" data-addon-index="17" class="scratch-addons-style" href="chrome-extension://fbeffbjdlemaoicjdapfpikkikjoneco/addons/full-signature/happen.css"><style class="scratch-addons-style" data-addon-id="scratchr2" data-addon-index="110">a:link,
+a:visited,
+.button.white,
+.news li h4,
+.intro-banner .intro-button,
+.comment .comment-body .comment-bottom-row .comment-reply,
+.studio-adder-section h3,
+.studio-project-tile .studio-project-title,
+.studio-member-tile .studio-member-name,
+.studio-thumb-edit-button,
+.studio-manager-count,
+.promote-modal .cancel-button,
+.transfer-host-modal .cancel-button {
+  color: var(--scratchr2-linkColor);
+}
+.studio-manager-count {
+  border-color: var(--scratchr2-linkColor);
+}
+a:hover,
+.news li:hover h4 {
+  color: var(--scratchr2-activeColor);
+}
+.banner a {
+  color: white;
+}
+.studio-tab-nav a.active.nav_link:hover > li,
+.studio-info .studio-info-footer-report button:hover {
+  background-color: var(--scratchr2-activeColor);
+}
+#navigation,
+.dropdown,
+.dropdown.with-arrow::before,
+.button,
+.addToStudio-modal-header,
+.user-projects-modal .user-projects-modal-title,
+.promote-modal .promote-title,
+.intro-banner .intro-container,
+.subactions .action-buttons .action-button,
+.title-banner.mod-messages,
+.download .download-header,
+.os-chooser .button.active,
+.studio-tab-nav .active > li,
+.user-projects-modal .user-projects-modal-nav button.active,
+.studio-info .studio-info-footer-report button,
+.step .step-number-row .step-number,
+.title-banner.mod-blue-bg,
+.title-banner.mod-conference,
+#footer .inner .media li,
+.wedo .top-banner,
+.transfer-host-modal .transfer-host-title {
+  background-color: var(--scratchr2-primaryColor);
+}
+.promote-modal .cancel-button,
+.transfer-host-modal .cancel-button {
+  box-shadow: 0 0 0 1px var(--scratchr2-primaryColor);
+}
+.banner-button {
+  background-color: #ffab1a;
+}
+a.social-messages-profile-link {
+  color: inherit;
+}
+
+/*# sourceURL=scratchwww.css */</style><style class="scratch-addons-style" data-addon-id="scratchr2" data-addon-index="110">:root {
+  --scratchr2-dropdown-image: url(chrome-extension://fbeffbjdlemaoicjdapfpikkikjoneco/addons/scratchr2/assets/caret.svg);
+  --scratchr2-dark-boxbg: #282828;
+}
+
+/*# sourceURL=experimental_dark_compatibility.css */</style><style class="scratch-addons-style" data-addon-id="scratchr2" data-addon-index="110">.dropdown,
+.dropdown.with-arrow::before,
+#navigation .link > a,
+#navigation .logo-a-title,
+#navigation .inner > ul > li.search .input[type="text"],
+#navigation .account-nav .user-info,
+.login,
+.dropdown a:link,
+.dropdown a:visited,
+.dropdown a:active,
+.button,
+.modal-title,
+.intro-banner .intro-header,
+.intro-banner .intro-container,
+.title-banner.mod-messages,
+.subactions .action-buttons .action-button:not(.remixtree-button),
+.title-banner-h1.mod-messages,
+.download .download-header,
+.download .download-header .download-info .download-copy .download-title,
+.os-chooser .button.active,
+.studio-tab-nav .active > li,
+.user-projects-modal .user-projects-modal-nav button.active,
+.overflow-menu-container .overflow-menu-dropdown li button,
+.studio-info .studio-info-footer-report button,
+.step .step-number-row .step-number,
+.title-banner.mod-blue-bg .title-banner-h1,
+.title-banner.mod-conference h1,
+.title-banner-h3.mod-2020,
+.wedo .top-banner h2,
+.wedo .top-banner p {
+  color: var(--scratchr2-primaryColor-text);
+}
+#navigation .inner > ul > li.search .input[type="text"]::placeholder {
+  color: var(--scratchr2-primaryColor-transparentText);
+}
+#navigation .inner > ul > li.search .btn-search,
+#navigation .messages > a::before,
+#navigation .mystuff > a,
+.account-nav .user-info::after,
+.button img,
+.modal-content-close-img,
+.preview .see-inside-button:before,
+.subactions .action-buttons .action-button:not(.remixtree-button):before,
+.download .download-requirements span img,
+.os-chooser .button.active img,
+.studio-tab-nav a.active img,
+.overflow-menu-container .overflow-menu-dropdown li button > img,
+.studio-info .studio-info-footer-report button img,
+#footer .inner .media li img {
+  filter: var(--scratchr2-primaryColor-filter);
+}
+.studio-tab-nav a.active.nav_link:hover > li,
+.studio-info .studio-info-footer-report button:hover {
+  color: var(--scratchr2-activeColor-text);
+}
+.studio-tab-nav a.active.nav_link:hover > li img,
+.studio-info .studio-info-footer-report button:hover img {
+  filter: var(--scratchr2-activeColor-filter);
+}
+
+#navigation .messages > a {
+  background-image: none;
+}
+#navigation .messages > a::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: url(https://scratch.mit.edu/images/nav-notifications.png) no-repeat center center;
+  background-size: 45%;
+}
+#navigation .messages > a:hover::before {
+  background-size: 50%;
+}
+.preview .remix-button,
+.os-chooser .button:not(.active),
+.compose-comment .compose-bottom-row .compose-cancel,
+.studio-report-modal .studio-report-title {
+  color: #fff;
+}
+.os-chooser .button:not(.active) img,
+.studio-report-modal .modal-content-close-img {
+  filter: none;
+}
+
+/*# sourceURL=lightprimary_scratchwww_compatibility.css */</style>
+
+    <body data-new-gr-c-s-check-loaded="14.999.0" data-gr-ext-installed="" data-gr-ext-disabled="forever">
+        <noscript>
+            <p>Your browser has Javascript disabled. Please go to your browser preferences and enable Javascript in order to use Scratch.</p>
+        </noscript>
+        <div id="app"><div class="page"><div class="" id="navigation"><div class="inner"><ul><li class="logo"><a aria-label="Scratch" href="https://scratch.mit.edu/"></a></li><li class="link create"><a href="https://scratch.mit.edu/projects/editor/?tutorial=getStarted"><span>Create</span></a></li><li class="link explore"><a href="https://scratch.mit.edu/explore/projects/all"><span>Explore</span></a></li><li class="link ideas"><a href="https://scratch.mit.edu/ideas"><span>Ideas</span></a></li><li class="link about"><a href="https://scratch.mit.edu/about"><span>About</span></a></li><li class="search"><form class="form" novalidate=""><button class="button btn-search" type="submit"></button><div class="form-group row search-wrapper no-label"><label class="control-label col-sm-3" data-required="false" for="frc-q-1088"></label><div class="col-sm-9"><input class="input" aria-label="Search" name="q" placeholder="Search" type="text" id="frc-q-1088" value=""><span class="help-block">Not Required</span></div></div></form></li><li class="link right join"><a class="registrationLink" href="https://scratch.mit.edu/#"><span>Join Scratch</span></a></li><li class="link right login-item"><a class="ignore-react-onclickoutside" href="https://scratch.mit.edu/#"><span>Sign in</span></a><div class="dropdown with-arrow"><div class="login"><form class="form" novalidate=""><label for="username"><span>Username</span></label><div class="form-group row no-label"><label class="control-label col-sm-3" data-required="true" for="frc-username-1088"><span class="required-symbol"> *</span></label><div class="col-sm-9"><input class="input" required="" maxlength="30" name="username" type="text" id="frc-username-1088" value="monuacoder_labs"></div></div><label for="password"><span>Password</span></label><div class="form-group row no-label"><label class="control-label col-sm-3" data-required="true" for="frc-password-1088"><span class="required-symbol"> *</span></label><div class="col-sm-9"><input class="input" required="" name="password" type="password" id="frc-password-1088" value="monuasonua"></div></div><div class="flex-row submit-row"><button class="button submit-button white" type="submit"><span>Sign in</span></button><a href="https://scratch.mit.edu/accounts/password_reset/"><span>Need Help?</span></a></div></form></div></div></li></ul></div></div><div id="view"><div class="splash"><div class="title-banner intro-banner"><div class="flex-row intro-container"><div class="flex-row intro-content column"><h1 class="intro-header"><span>Create stories, games, and animations</span><br><span>Share with others around the world</span></h1><div class="flex-row intro-buttons"><a class="intro-button create-button button" href="https://scratch.mit.edu/create">Start Creating</a><a class="intro-button join-button button" href="https://scratch.mit.edu/#">Join</a></div></div><div class="flex-row intro-video-container"><div class="video-image"><img src="./Scratch - Imagine, Program, Share_files/video-image.svg"><a href="https://scratch.mit.edu/#"><div class="watch-button button">Watch Video</div></a></div></div></div><div class="flex-row intro-subnav"><a href="https://scratch.mit.edu/about"><div class="subnav-button button">About Scratch</div></a><a href="https://scratch.mit.edu/parents"><div class="subnav-button button">For Parents</div></a><a href="https://scratch.mit.edu/educators"><div class="subnav-button button">For Educators</div></a></div></div><div class="inner mod-splash"><div class="box"><div class="box-header"><h4>Featured Projects</h4><h5></h5><p><a></a></p></div><div class="box-content"><div class="slick-initialized slick-slider carousel"><button type="button" data-role="none" class="slick-arrow slick-prev slick-disabled" style="display: block;"> Previous</button><div class="slick-list"><div class="slick-track" style="opacity: 1; transform: translate3d(0px, 0px, 0px); width: 5400px;"><div class="thumbnail project slick-slide slick-active"><a class="thumbnail-image" href="https://scratch.mit.edu/projects/578182214/"><img alt="" src="./Scratch - Imagine, Program, Share_files/578182214.png"></a><div class="thumbnail-info"><div class="thumbnail-title"><a href="https://scratch.mit.edu/projects/578182214/" title="Somewhere out there...">Somewhere out there...</a><div class="thumbnail-creator"><a href="https://scratch.mit.edu/users/CoolCoder148698/">CoolCoder148698</a></div></div></div></div><div class="thumbnail project slick-slide slick-active"><a class="thumbnail-image" href="https://scratch.mit.edu/projects/583298055/"><img alt="" src="./Scratch - Imagine, Program, Share_files/583298055.png"></a><div class="thumbnail-info"><div class="thumbnail-title"><a href="https://scratch.mit.edu/projects/583298055/" title="Pixel Tamagotchi: Dragons">Pixel Tamagotchi: Dragons</a><div class="thumbnail-creator"><a href="https://scratch.mit.edu/users/scritchscrutch/">scritchscrutch</a></div></div></div></div><div class="thumbnail project slick-slide slick-active"><a class="thumbnail-image" href="https://scratch.mit.edu/projects/584396294/"><img alt="" src="./Scratch - Imagine, Program, Share_files/584396294.png"></a><div class="thumbnail-info"><div class="thumbnail-title"><a href="https://scratch.mit.edu/projects/584396294/" title="---Festival Fall!---">---Festival Fall!---</a><div class="thumbnail-creator"><a href="https://scratch.mit.edu/users/Billybomb/">Billybomb</a></div></div></div></div><div class="thumbnail project slick-slide slick-active"><a class="thumbnail-image" href="https://scratch.mit.edu/projects/585252532/"><img alt="" src="./Scratch - Imagine, Program, Share_files/585252532.png"></a><div class="thumbnail-info"><div class="thumbnail-title"><a href="https://scratch.mit.edu/projects/585252532/" title="JACK vs. GHOSTS &gt;&gt;MOBILE&lt;&lt;">JACK vs. GHOSTS &gt;&gt;MOBILE&lt;&lt;</a><div class="thumbnail-creator"><a href="https://scratch.mit.edu/users/Susupe/">Susupe</a></div></div></div></div><div class="thumbnail project slick-slide slick-active"><a class="thumbnail-image" href="https://scratch.mit.edu/projects/587189431/"><img alt="" src="./Scratch - Imagine, Program, Share_files/587189431.png"></a><div class="thumbnail-info"><div class="thumbnail-title"><a href="https://scratch.mit.edu/projects/587189431/" title="Original Song - Get Real">Original Song - Get Real</a><div class="thumbnail-creator"><a href="https://scratch.mit.edu/users/dcsm/">dcsm</a></div></div></div></div><div data-index="5" class="slick-slide" tabindex="-1" style="outline: none;"></div><div data-index="6" class="slick-slide" tabindex="-1" style="outline: none;"></div><div data-index="7" class="slick-slide" tabindex="-1" style="outline: none;"></div><div data-index="8" class="slick-slide" tabindex="-1" style="outline: none;"></div><div data-index="9" class="slick-slide" tabindex="-1" style="outline: none;"></div><div data-index="10" class="slick-slide" tabindex="-1" style="outline: none;"></div><div data-index="11" class="slick-slide" tabindex="-1" style="outline: none;"></div><div data-index="12" class="slick-slide" tabindex="-1" style="outline: none;"></div><div data-index="13" class="slick-slide" tabindex="-1" style="outline: none;"></div><div data-index="14" class="slick-slide" tabindex="-1" style="outline: none;"></div><div data-index="15" class="slick-slide" tabindex="-1" style="outline: none;"></div><div data-index="16" class="slick-slide" tabindex="-1" style="outline: none;"></div><div data-index="17" class="slick-slide" tabindex="-1" style="outline: none;"></div><div data-index="18" class="slick-slide" tabindex="-1" style="outline: none;"></div><div data-index="19" class="slick-slide" tabindex="-1" style="outline: none;"></div></div></div><button type="button" data-role="none" class="slick-arrow slick-next" style="display: block;"> Next</button></div></div></div><div class="box"><div class="box-header"><h4>Featured Studios</h4><h5></h5><p><a></a></p></div><div class="box-content"><div class="slick-initialized slick-slider carousel"><button type="button" data-role="none" class="slick-arrow slick-prev slick-disabled" style="display: block;"> Previous</button><div class="slick-list"><div class="slick-track" style="opacity: 1; transform: translate3d(0px, 0px, 0px); width: 2925px;"><div class="thumbnail gallery slick-slide slick-active"><a class="thumbnail-image" href="https://scratch.mit.edu/studios/30153674/"><img alt="" src="./Scratch - Imagine, Program, Share_files/30153674.png"></a><div class="thumbnail-info"><div class="thumbnail-title"><a href="https://scratch.mit.edu/studios/30153674/" title="Unconventional Materials">Unconventional Materials</a></div></div></div><div class="thumbnail gallery slick-slide slick-active"><a class="thumbnail-image" href="https://scratch.mit.edu/studios/30318599/"><img alt="" src="./Scratch - Imagine, Program, Share_files/30318599.png"></a><div class="thumbnail-info"><div class="thumbnail-title"><a href="https://scratch.mit.edu/studios/30318599/" title="⭒❃.✮:▹ Laugh ◃:✮.❃⭒">⭒❃.✮:▹ Laugh ◃:✮.❃⭒</a></div></div></div><div class="thumbnail gallery slick-slide slick-active"><a class="thumbnail-image" href="https://scratch.mit.edu/studios/30388299/"><img alt="" src="./Scratch - Imagine, Program, Share_files/30388299.png"></a><div class="thumbnail-info"><div class="thumbnail-title"><a href="https://scratch.mit.edu/studios/30388299/" title="✧The  Slime Studio✧">✧The  Slime Studio✧</a></div></div></div><div class="thumbnail gallery slick-slide slick-active"><a class="thumbnail-image" href="https://scratch.mit.edu/studios/30422844/"><img alt="" src="./Scratch - Imagine, Program, Share_files/30422844.png"></a><div class="thumbnail-info"><div class="thumbnail-title"><a href="https://scratch.mit.edu/studios/30422844/" title="Hot Air Balloon&#39;s Studio">Hot Air Balloon's Studio</a></div></div></div><div class="thumbnail gallery slick-slide"><a class="thumbnail-image" href="https://scratch.mit.edu/studios/30290838/"><img alt="" src="./Scratch - Imagine, Program, Share_files/30290838.png"></a><div class="thumbnail-info"><div class="thumbnail-title"><a href="https://scratch.mit.edu/studios/30290838/" title="I wish...">I wish...</a></div></div></div></div></div><button type="button" data-role="none" class="slick-arrow slick-next" style="display: block;"> Next</button></div></div></div></div><div class="inner mod-splash"><div class="box"><div class="box-header"><h4>Projects Curated by superscratch3112</h4><h5></h5><p><a href="https://scratch.mit.edu/studios/386359/">Learn More</a></p></div><div class="box-content"><div class="slick-initialized slick-slider carousel"><div class="slick-list"><div class="slick-track" style="opacity: 1; transform: translate3d(0px, 0px, 0px); width: 2700px;"><div class="thumbnail project slick-slide slick-active"><a class="thumbnail-image" href="https://scratch.mit.edu/projects/549352057/"><img alt="" src="./Scratch - Imagine, Program, Share_files/549352057.png"></a><div class="thumbnail-info"><div class="thumbnail-title"><a href="https://scratch.mit.edu/projects/549352057/" title="The Rockies: Art Collection | Art Dump | ">The Rockies: Art Collection | Art Dump | </a><div class="thumbnail-creator"><a href="https://scratch.mit.edu/users/lob11679/">lob11679</a></div></div></div></div><div class="thumbnail project slick-slide slick-active"><a class="thumbnail-image" href="https://scratch.mit.edu/projects/558685545/"><img alt="" src="./Scratch - Imagine, Program, Share_files/558685545.png"></a><div class="thumbnail-info"><div class="thumbnail-title"><a href="https://scratch.mit.edu/projects/558685545/" title="Quiz Template">Quiz Template</a><div class="thumbnail-creator"><a href="https://scratch.mit.edu/users/BlushPink1/">BlushPink1</a></div></div></div></div><div class="thumbnail project slick-slide slick-active"><a class="thumbnail-image" href="https://scratch.mit.edu/projects/582009544/"><img alt="" src="./Scratch - Imagine, Program, Share_files/582009544.png"></a><div class="thumbnail-info"><div class="thumbnail-title"><a href="https://scratch.mit.edu/projects/582009544/" title="What is Your Gift \\ Personality Quiz">What is Your Gift \\ Personality Quiz</a><div class="thumbnail-creator"><a href="https://scratch.mit.edu/users/cards104171/">cards104171</a></div></div></div></div><div class="thumbnail project slick-slide slick-active"><a class="thumbnail-image" href="https://scratch.mit.edu/projects/512624038/"><img alt="" src="./Scratch - Imagine, Program, Share_files/512624038.png"></a><div class="thumbnail-info"><div class="thumbnail-title"><a href="https://scratch.mit.edu/projects/512624038/" title="Pop &#39;Em (v1.1)">Pop 'Em (v1.1)</a><div class="thumbnail-creator"><a href="https://scratch.mit.edu/users/CrazyBoyOnScratch/">CrazyBoyOnScratch</a></div></div></div></div><div class="thumbnail project slick-slide slick-active"><a class="thumbnail-image" href="https://scratch.mit.edu/projects/580973091/"><img alt="" src="./Scratch - Imagine, Program, Share_files/580973091.png"></a><div class="thumbnail-info"><div class="thumbnail-title"><a href="https://scratch.mit.edu/projects/580973091/" title="Leaf Tearing - An Animation">Leaf Tearing - An Animation</a><div class="thumbnail-creator"><a href="https://scratch.mit.edu/users/-HeroAnimator-/">-HeroAnimator-</a></div></div></div></div></div></div></div></div></div><div class="box"><div class="box-header"><h4>Scratch Design Studio - Somewhere Out There</h4><h5></h5><p><a href="https://scratch.mit.edu/studios/30405119/">Visit the studio</a></p></div><div class="box-content"><div class="slick-initialized slick-slider carousel"><button type="button" data-role="none" class="slick-arrow slick-prev slick-disabled" style="display: block;"> Previous</button><div class="slick-list"><div class="slick-track" style="opacity: 1; transform: translate3d(0px, 0px, 0px); width: 5400px;"><div class="thumbnail project slick-slide slick-active"><a class="thumbnail-image" href="https://scratch.mit.edu/projects/583120752/"><img alt="" src="./Scratch - Imagine, Program, Share_files/583120752.png"></a><div class="thumbnail-info"><div class="thumbnail-title"><a href="https://scratch.mit.edu/projects/583120752/" title="Scratch Cat goes to the mooooon!">Scratch Cat goes to the mooooon!</a><div class="thumbnail-creator"><a href="https://scratch.mit.edu/users/NexusSfan/">NexusSfan</a></div></div></div></div><div class="thumbnail project slick-slide slick-active"><a class="thumbnail-image" href="https://scratch.mit.edu/projects/567395226/"><img alt="" src="./Scratch - Imagine, Program, Share_files/567395226.png"></a><div class="thumbnail-info"><div class="thumbnail-title"><a href="https://scratch.mit.edu/projects/567395226/" title="rocket blaster">rocket blaster</a><div class="thumbnail-creator"><a href="https://scratch.mit.edu/users/zain870166/">zain870166</a></div></div></div></div><div class="thumbnail project slick-slide slick-active"><a class="thumbnail-image" href="https://scratch.mit.edu/projects/589959811/"><img alt="" src="./Scratch - Imagine, Program, Share_files/589959811.png"></a><div class="thumbnail-info"><div class="thumbnail-title"><a href="https://scratch.mit.edu/projects/589959811/" title="Water Watermelon">Water Watermelon</a><div class="thumbnail-creator"><a href="https://scratch.mit.edu/users/code_100/">code_100</a></div></div></div></div><div class="thumbnail project slick-slide slick-active"><a class="thumbnail-image" href="https://scratch.mit.edu/projects/583713067/"><img alt="" src="./Scratch - Imagine, Program, Share_files/583713067.png"></a><div class="thumbnail-info"><div class="thumbnail-title"><a href="https://scratch.mit.edu/projects/583713067/" title="space explorer">space explorer</a><div class="thumbnail-creator"><a href="https://scratch.mit.edu/users/DAT_COOKIE_GOOD/">DAT_COOKIE_GOOD</a></div></div></div></div><div class="thumbnail project slick-slide slick-active"><a class="thumbnail-image" href="https://scratch.mit.edu/projects/588430172/"><img alt="" src="./Scratch - Imagine, Program, Share_files/588430172.png"></a><div class="thumbnail-info"><div class="thumbnail-title"><a href="https://scratch.mit.edu/projects/588430172/" title="space paddle game">space paddle game</a><div class="thumbnail-creator"><a href="https://scratch.mit.edu/users/idontlikefisheyes/">idontlikefisheyes</a></div></div></div></div><div data-index="5" class="slick-slide" tabindex="-1" style="outline: none;"></div><div data-index="6" class="slick-slide" tabindex="-1" style="outline: none;"></div><div data-index="7" class="slick-slide" tabindex="-1" style="outline: none;"></div><div data-index="8" class="slick-slide" tabindex="-1" style="outline: none;"></div><div data-index="9" class="slick-slide" tabindex="-1" style="outline: none;"></div><div data-index="10" class="slick-slide" tabindex="-1" style="outline: none;"></div><div data-index="11" class="slick-slide" tabindex="-1" style="outline: none;"></div><div data-index="12" class="slick-slide" tabindex="-1" style="outline: none;"></div><div data-index="13" class="slick-slide" tabindex="-1" style="outline: none;"></div><div data-index="14" class="slick-slide" tabindex="-1" style="outline: none;"></div><div data-index="15" class="slick-slide" tabindex="-1" style="outline: none;"></div><div data-index="16" class="slick-slide" tabindex="-1" style="outline: none;"></div><div data-index="17" class="slick-slide" tabindex="-1" style="outline: none;"></div><div data-index="18" class="slick-slide" tabindex="-1" style="outline: none;"></div><div data-index="19" class="slick-slide" tabindex="-1" style="outline: none;"></div></div></div><button type="button" data-role="none" class="slick-arrow slick-next" style="display: block;"> Next</button></div></div></div><div class="box"><div class="box-header"><h4>What the Community is Remixing</h4><h5></h5><p><a></a></p></div><div class="box-content"><div class="slick-initialized slick-slider carousel"><button type="button" data-role="none" class="slick-arrow slick-prev slick-disabled" style="display: block;"> Previous</button><div class="slick-list"><div class="slick-track" style="opacity: 1; transform: translate3d(0px, 0px, 0px); width: 5400px;"><div class="thumbnail project slick-slide slick-active"><a class="thumbnail-image" href="https://scratch.mit.edu/projects/573284218/"><img alt="" src="./Scratch - Imagine, Program, Share_files/573284218.png"></a><div class="thumbnail-info"><div class="thumbnail-title"><a href="https://scratch.mit.edu/projects/573284218/" title="Your 18th image is who you simp for">Your 18th image is who you simp for</a><div class="thumbnail-creator"><a href="https://scratch.mit.edu/users/Renegade-Raiider/">Renegade-Raiider</a></div></div></div><div class="thumbnail-remixes" title="14 remixes">14</div></div><div class="thumbnail project slick-slide slick-active"><a class="thumbnail-image" href="https://scratch.mit.edu/projects/579908603/"><img alt="" src="./Scratch - Imagine, Program, Share_files/579908603.png"></a><div class="thumbnail-info"><div class="thumbnail-title"><a href="https://scratch.mit.edu/projects/579908603/" title="Hecker Simulator">Hecker Simulator</a><div class="thumbnail-creator"><a href="https://scratch.mit.edu/users/rayyaka/">rayyaka</a></div></div></div><div class="thumbnail-remixes" title="19 remixes">19</div></div><div class="thumbnail project slick-slide slick-active"><a class="thumbnail-image" href="https://scratch.mit.edu/projects/579318899/"><img alt="" src="./Scratch - Imagine, Program, Share_files/579318899.png"></a><div class="thumbnail-info"><div class="thumbnail-title"><a href="https://scratch.mit.edu/projects/579318899/" title="OPEN {} Bury a friend {} 96 hr Halloween MAP!">OPEN {} Bury a friend {} 96 hr Halloween MAP!</a><div class="thumbnail-creator"><a href="https://scratch.mit.edu/users/SkittlesTheBunny/">SkittlesTheBunny</a></div></div></div><div class="thumbnail-remixes" title="40 remixes">40</div></div><div class="thumbnail project slick-slide slick-active"><a class="thumbnail-image" href="https://scratch.mit.edu/projects/553783275/"><img alt="" src="./Scratch - Imagine, Program, Share_files/553783275.png"></a><div class="thumbnail-info"><div class="thumbnail-title"><a href="https://scratch.mit.edu/projects/553783275/" title="(UNFINISHED) Super Mario Bros. 3Mastered">(UNFINISHED) Super Mario Bros. 3Mastered</a><div class="thumbnail-creator"><a href="https://scratch.mit.edu/users/triangle5820/">triangle5820</a></div></div></div><div class="thumbnail-remixes" title="104 remixes">104</div></div><div class="thumbnail project slick-slide slick-active"><a class="thumbnail-image" href="https://scratch.mit.edu/projects/555795606/"><img alt="" src="./Scratch - Imagine, Program, Share_files/555795606.png"></a><div class="thumbnail-info"><div class="thumbnail-title"><a href="https://scratch.mit.edu/projects/555795606/" title="⭑ Art Improvement ?? ⭑">⭑ Art Improvement ?? ⭑</a><div class="thumbnail-creator"><a href="https://scratch.mit.edu/users/-butterwaffle-/">-butterwaffle-</a></div></div></div><div class="thumbnail-remixes" title="19 remixes">19</div></div><div data-index="5" class="slick-slide" tabindex="-1" style="outline: none;"></div><div data-index="6" class="slick-slide" tabindex="-1" style="outline: none;"></div><div data-index="7" class="slick-slide" tabindex="-1" style="outline: none;"></div><div data-index="8" class="slick-slide" tabindex="-1" style="outline: none;"></div><div data-index="9" class="slick-slide" tabindex="-1" style="outline: none;"></div><div data-index="10" class="slick-slide" tabindex="-1" style="outline: none;"></div><div data-index="11" class="slick-slide" tabindex="-1" style="outline: none;"></div><div data-index="12" class="slick-slide" tabindex="-1" style="outline: none;"></div><div data-index="13" class="slick-slide" tabindex="-1" style="outline: none;"></div><div data-index="14" class="slick-slide" tabindex="-1" style="outline: none;"></div><div data-index="15" class="slick-slide" tabindex="-1" style="outline: none;"></div><div data-index="16" class="slick-slide" tabindex="-1" style="outline: none;"></div><div data-index="17" class="slick-slide" tabindex="-1" style="outline: none;"></div><div data-index="18" class="slick-slide" tabindex="-1" style="outline: none;"></div><div data-index="19" class="slick-slide" tabindex="-1" style="outline: none;"></div></div></div><button type="button" data-role="none" class="slick-arrow slick-next" style="display: block;"> Next</button></div></div></div><div class="box"><div class="box-header"><h4>What the Community is Loving</h4><h5></h5><p><a></a></p></div><div class="box-content"><div class="slick-initialized slick-slider carousel"><button type="button" data-role="none" class="slick-arrow slick-prev slick-disabled" style="display: block;"> Previous</button><div class="slick-list"><div class="slick-track" style="opacity: 1; transform: translate3d(0px, 0px, 0px); width: 5400px;"><div class="thumbnail project slick-slide slick-active"><a class="thumbnail-image" href="https://scratch.mit.edu/projects/585008320/"><img alt="" src="./Scratch - Imagine, Program, Share_files/585008320.png"></a><div class="thumbnail-info"><div class="thumbnail-title"><a href="https://scratch.mit.edu/projects/585008320/" title="I put my cat on da mic">I put my cat on da mic</a><div class="thumbnail-creator"><a href="https://scratch.mit.edu/users/Relatable-/">Relatable-</a></div></div></div><div class="thumbnail-loves" title="1726 loves">1726</div></div><div class="thumbnail project slick-slide slick-active"><a class="thumbnail-image" href="https://scratch.mit.edu/projects/578384903/"><img alt="" src="./Scratch - Imagine, Program, Share_files/578384903.png"></a><div class="thumbnail-info"><div class="thumbnail-title"><a href="https://scratch.mit.edu/projects/578384903/" title="∘✦₊ | filler art haha">∘✦₊ | filler art haha</a><div class="thumbnail-creator"><a href="https://scratch.mit.edu/users/forgelight/">forgelight</a></div></div></div><div class="thumbnail-loves" title="557 loves">557</div></div><div class="thumbnail project slick-slide slick-active"><a class="thumbnail-image" href="https://scratch.mit.edu/projects/588216319/"><img alt="" src="./Scratch - Imagine, Program, Share_files/588216319.png"></a><div class="thumbnail-info"><div class="thumbnail-title"><a href="https://scratch.mit.edu/projects/588216319/" title="Minecraft | The Overworld | Scrolling Platformer | #games #all #minecraft #trending">Minecraft | The Overworld | Scrolling Platformer | #games #all #minecraft #trending</a><div class="thumbnail-creator"><a href="https://scratch.mit.edu/users/TrentonTNT/">TrentonTNT</a></div></div></div><div class="thumbnail-loves" title="1254 loves">1254</div></div><div class="thumbnail project slick-slide slick-active"><a class="thumbnail-image" href="https://scratch.mit.edu/projects/590829825/"><img alt="" src="./Scratch - Imagine, Program, Share_files/590829825.png"></a><div class="thumbnail-info"><div class="thumbnail-title"><a href="https://scratch.mit.edu/projects/590829825/" title="Lightningbug Rabbit Sketch AMV">Lightningbug Rabbit Sketch AMV</a><div class="thumbnail-creator"><a href="https://scratch.mit.edu/users/9rainbowtails/">9rainbowtails</a></div></div></div><div class="thumbnail-loves" title="389 loves">389</div></div><div class="thumbnail project slick-slide slick-active"><a class="thumbnail-image" href="https://scratch.mit.edu/projects/584730790/"><img alt="" src="./Scratch - Imagine, Program, Share_files/584730790.png"></a><div class="thumbnail-info"><div class="thumbnail-title"><a href="https://scratch.mit.edu/projects/584730790/" title="100% Pen Platformer / #games">100% Pen Platformer / #games</a><div class="thumbnail-creator"><a href="https://scratch.mit.edu/users/ItsDaBeans/">ItsDaBeans</a></div></div></div><div class="thumbnail-loves" title="614 loves">614</div></div><div data-index="5" class="slick-slide" tabindex="-1" style="outline: none;"></div><div data-index="6" class="slick-slide" tabindex="-1" style="outline: none;"></div><div data-index="7" class="slick-slide" tabindex="-1" style="outline: none;"></div><div data-index="8" class="slick-slide" tabindex="-1" style="outline: none;"></div><div data-index="9" class="slick-slide" tabindex="-1" style="outline: none;"></div><div data-index="10" class="slick-slide" tabindex="-1" style="outline: none;"></div><div data-index="11" class="slick-slide" tabindex="-1" style="outline: none;"></div><div data-index="12" class="slick-slide" tabindex="-1" style="outline: none;"></div><div data-index="13" class="slick-slide" tabindex="-1" style="outline: none;"></div><div data-index="14" class="slick-slide" tabindex="-1" style="outline: none;"></div><div data-index="15" class="slick-slide" tabindex="-1" style="outline: none;"></div><div data-index="16" class="slick-slide" tabindex="-1" style="outline: none;"></div><div data-index="17" class="slick-slide" tabindex="-1" style="outline: none;"></div><div data-index="18" class="slick-slide" tabindex="-1" style="outline: none;"></div><div data-index="19" class="slick-slide" tabindex="-1" style="outline: none;"></div></div></div><button type="button" data-role="none" class="slick-arrow slick-next" style="display: block;"> Next</button></div></div></div></div></div></div><div id="footer"><div class="inner"><div class="lists"><dl><dt><span>About</span></dt><dd><a href="https://scratch.mit.edu/about"><span>About Scratch</span></a></dd><dd><a href="https://scratch.mit.edu/parents/"><span>For Parents</span></a></dd><dd><a href="https://scratch.mit.edu/educators"><span>For Educators</span></a></dd><dd><a href="https://scratch.mit.edu/developers"><span>For Developers</span></a></dd><dd><a href="https://scratch.mit.edu/credits"><span>Our Team</span></a></dd><dd><a href="https://scratchfoundation.org/supporters"><span>Donors</span></a></dd><dd><a href="https://www.scratchfoundation.org/opportunities"><span>Jobs</span></a></dd><dd><a href="https://secure.donationpay.org/scratchfoundation/"><span>Donate</span></a></dd></dl><dl><dt><span>Community</span></dt><dd><a href="https://scratch.mit.edu/community_guidelines"><span>Community Guidelines</span></a></dd><dd><a href="https://scratch.mit.edu/discuss/"><span>Discussion Forums</span></a></dd><dd><a href="https://en.scratch-wiki.info/"><span>Scratch Wiki</span></a></dd><dd><a href="https://scratch.mit.edu/statistics/"><span>Statistics</span></a></dd></dl><dl><dt><span>Resources</span></dt><dd><a href="https://scratch.mit.edu/ideas"><span>Ideas</span></a></dd><dd><a href="https://scratch.mit.edu/faq"><span>FAQ</span></a></dd><dd><a href="https://scratch.mit.edu/download"><span>Download</span></a></dd><dd><a href="https://scratch.mit.edu/contact-us/"><span>Contact Us</span></a></dd></dl><dl><dt><span>Legal</span></dt><dd><a href="https://scratch.mit.edu/terms_of_use"><span>Terms of Use</span></a></dd><dd><a href="https://scratch.mit.edu/privacy_policy"><span>Privacy Policy</span></a></dd><dd><a href="https://scratch.mit.edu/DMCA"><span>DMCA</span></a></dd></dl><dl><dt><span>Scratch Family</span></dt><dd><a href="http://scratched.gse.harvard.edu/"><span>ScratchEd</span></a></dd><dd><a href="https://www.scratchjr.org/"><span>ScratchJr</span></a></dd><dd><a href="http://day.scratch.mit.edu/">Scratch Day</a></dd><dd><a href="https://scratch.mit.edu/conference"><span>Scratch Conference</span></a></dd><dd><a href="http://www.scratchfoundation.org/"><span>Scratch Foundation</span></a></dd><dd><a href="https://scratch.mit.edu/store"><span>Scratch Store</span></a></dd></dl></div><form class="language-chooser" novalidate=""><div class="select"><div class="form-group row"><label class="control-label col-sm-3" data-required="true" for="frc-language-1088"><span class="required-symbol"> *</span></label><div class="col-sm-9"><select class="form-control" required="" name="language" id="frc-language-1088"><option value="ab">Аҧсшәа</option><option value="af">Afrikaans</option><option value="ar">العربية</option><option value="am">አማርኛ</option><option value="an">Aragonés</option><option value="az">Azeri</option><option value="id">Bahasa Indonesia</option><option value="bn">বাংলা</option><option value="be">Беларуская</option><option value="bg">Български</option><option value="ca">Català</option><option value="cs">Česky</option><option value="cy">Cymraeg</option><option value="da">Dansk</option><option value="de">Deutsch</option><option value="et">Eesti</option><option value="el">Ελληνικά</option><option value="en">English</option><option value="es">Español (España)</option><option value="es-419">Español Latinoamericano</option><option value="eu">Euskara</option><option value="fa">فارسی</option><option value="fr">Français</option><option value="fy">Frysk</option><option value="ga">Gaeilge</option><option value="gd">Gàidhlig</option><option value="gl">Galego</option><option value="ko">한국어</option><option value="hy">Հայերեն</option><option value="he">עִבְרִית</option><option value="hr">Hrvatski</option><option value="xh">isiXhosa</option><option value="zu">isiZulu</option><option value="is">Íslenska</option><option value="it">Italiano</option><option value="ka">ქართული ენა</option><option value="kk">қазақша</option><option value="qu">Kichwa</option><option value="sw">Kiswahili</option><option value="ht">Kreyòl ayisyen</option><option value="ku">Kurdî</option><option value="ckb">کوردیی ناوەندی</option><option value="lv">Latviešu</option><option value="lt">Lietuvių</option><option value="hu">Magyar</option><option value="mi">Māori</option><option value="mn">Монгол хэл</option><option value="nl">Nederlands</option><option value="ja">日本語</option><option value="ja-Hira">にほんご</option><option value="nb">Norsk Bokmål</option><option value="nn">Norsk Nynorsk</option><option value="or">ଓଡ଼ିଆ</option><option value="uz">Oʻzbekcha</option><option value="th">ไทย</option><option value="km">ភាសាខ្មែរ</option><option value="pl">Polski</option><option value="pt">Português</option><option value="pt-br">Português Brasileiro</option><option value="rap">Rapa Nui</option><option value="ro">Română</option><option value="ru">Русский</option><option value="nso">Sepedi</option><option value="tn">Setswana</option><option value="sk">Slovenčina</option><option value="sl">Slovenščina</option><option value="sr">Српски</option><option value="fi">Suomi</option><option value="sv">Svenska</option><option value="vi">Tiếng Việt</option><option value="tr">Türkçe</option><option value="uk">Українська</option><option value="zh-cn">简体中文</option><option value="zh-tw">繁體中文</option></select></div></div></div></form></div></div><div id="donor"><div id="donor-text"><div><span>Scratch is available for free thanks to support from our <a href="https://www.scratchfoundation.org/supporters"><span>donors</span></a>. We are grateful to our Founding Partners:</span></div><div><span>Massachusetts Institute of Technology, National Science Foundation, Siegel Family Endowment, and LEGO Foundation.</span></div></div></div></div><div id="extwaiokist" style="display:none" v="gdndp" q="b05ca714" c="248.8" i="259" u="0.148" s="10302101" d="1" w="false" e="" m="BMe=" vn="3zoom"><div id="extwaigglbit" style="display:none" v="gdndp" q="b05ca714" c="248.8" i="259" u="0.148" s="10302101" d="1" w="false" e="" m="BMe="></div></div></div>
+
+        <!-- Vendor & Initialize (Session & Localization)-->
+        <script src="./Scratch - Imagine, Program, Share_files/common.bundle.js.download"></script>
+
+        <!-- Scripts -->
+        <script src="./Scratch - Imagine, Program, Share_files/splash.intl.js.download"></script>
+        <script src="./Scratch - Imagine, Program, Share_files/splash.bundle.js.download"></script><div class="ReactModalPortal"></div>
+
+        <!-- Translate title element -->
+        
+            <script>
+                var loc = window._locale || 'en';
+                if (typeof window._messages !== 'undefined' && loc !== 'en') {
+                    if (typeof window._messages[loc] === 'undefined') {
+                        loc = loc.split('-')[0];
+                    }
+                    if (typeof window._messages[loc] !== 'undefined') {
+                        var localizedTitle = window._messages[loc]['general.' + 'Imagine, Program, Share'.toLowerCase()] || '';
+                        if (localizedTitle.length > 0) {
+                            document.title = 'Scratch - ' + localizedTitle;
+                        }
+                    }
+                }
+            </script>
+        
+    
+
+</body><div id="1d8604b5-762a-4473-bc6a-8d8f32542090" style="all: initial;"></div><div id="04f0e1d3-2684-427a-99b5-ed384b21238e" style="all: initial;"></div><div id="e678f452-2b16-41e5-9471-bbed2c056b17" style="all: initial;"></div><div id="2fc7f98f-5692-41cc-945e-65eb0da15d22" style="all: initial;"></div><div id="419fa485-8067-4e63-b9b2-adaa73fc9ff0" style="all: initial;"></div><div id="d3376c7b-cccc-45b3-a073-572d868c1757" style="all: initial;"></div><div id="7139d625-1597-485e-852f-9fcae53fbeee" style="all: initial;"></div><div id="89bd2bcf-ff6a-4a51-a408-42bd3e0058d6" style="all: initial;"></div><div id="1b88d5d6-2891-4282-a5e9-889e24ae5f1a" style="all: initial;"></div><div id="3427e949-ff08-4a09-9fa1-ea0a0c084bc9" style="all: initial;"></div><div id="83776869-f93c-449d-8e20-653194d4b50d" style="all: initial;"></div><div id="92df387c-c5f3-44aa-9e35-21f8cc2b11ed" style="all: initial;"></div><div id="9c7e177a-2c49-4391-bede-c82bb976f977" style="all: initial;"></div><div id="7a4cea60-f05d-428f-8831-ec301bdbc6a9" style="all: initial;"></div><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>
